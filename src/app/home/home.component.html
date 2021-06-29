@@ -1,0 +1,28 @@
+{{ product }} 
+<!-- PEAB OLEMA IDENTNE SELLEGA MIS ON .TS failis -->
+{{ productPrice }}
+<br>
+{{ product2 }}
+{{ productPrice2 }}
+<br>
+{{ product3 }}
+{{ productPrice3 }}
+
+<!-- for tsükkel, mis käib läbi listi -->
+<!-- läibkäidav on see, mis on viimane sõna jutumärkide sees -->
+<!-- PEAB OLEMA IDENTNE SELLEGA MIS ON .TS failis -->
+<div *ngFor="let MUUTUJA of list">{{ MUUTUJA }}</div>
+<div *ngFor="let item of listPrices">{{ item }}</div>
+
+{{ object.voti }}
+<br>
+{{ object1.title }} {{ object1.price }}
+<br>
+{{ object2.title }} {{ object2.price }}
+<br>
+{{ object3.title }} {{ object3.price }}
+<br>
+
+<div *ngFor="let object of objectArray">
+    {{ object.title }} {{ object.price }}
+</div>
