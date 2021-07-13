@@ -1,0 +1,13 @@
+<button routerLink="/admin" class="main-button">Tagasi</button>
+
+<br><br>
+
+<div *ngFor="let item of items">
+    <div>{{ item.imgSrc }}</div>
+    <div>{{ item.title }}</div>
+    <div>{{ item.price }}</div>
+    <div>{{ item.category }}</div>
+    <button (click)="onDeleteItem(item)" class="main-button">Kustuta</button>
+    <button routerLink="/admin/muuda-eset" class="main-button">Muuda</button>
+    <br>
+</div>

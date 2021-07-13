@@ -1,0 +1,17 @@
+.navbar {
+    background-color: rgb(197 39 39);
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* punktiga antakse klassile CSS */
+/* 
+
+#navbar {
+    mingi CSS
+}
+
+html-s peaks olema <element id="footer"></element>
+
+*/

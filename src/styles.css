@@ -5,3 +5,18 @@ body {
 }
 
 /* kui teksti ees pole punkti ega hashtagi siis annan tagile */
+
+.main-button {
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(202, 196, 196);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.main-button:hover {
+    background-color: rgb(165, 160, 160);
+    transition: 0.5s;
+}
