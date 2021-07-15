@@ -35,6 +35,11 @@ export class CartComponent implements OnInit {
 
   calculateSumOfCart() {
     this.sumOfCart = 0;
+    // ngFor="let itemInCart of itemsInCart"
+    // itemsInCart = [{item},{item},{title: "", price: 10}]
+    // itemInCart = {item}
+    // itemInCart = {title: "", price: 10}
+    // itemInCart = {item}
     this.itemsInCart.forEach(itemInCart => {
       this.sumOfCart += itemInCart.price
     });

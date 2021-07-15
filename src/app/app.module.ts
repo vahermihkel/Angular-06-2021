@@ -11,6 +11,7 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { ItemAddComponent } from './admin/item-add/item-add.component';
 import { ItemEditComponent } from './admin/item-edit/item-edit.component';
 import { ItemsViewComponent } from './admin/items-view/items-view.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ItemsViewComponent } from './admin/items-view/items-view.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

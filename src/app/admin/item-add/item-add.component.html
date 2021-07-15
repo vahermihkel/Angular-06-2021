@@ -2,3 +2,20 @@
 <button routerLink="/admin" class="main-button">Tagasi</button>
 <!-- relatiivne teekond - võrreldes sellega kus praegu asutakse -->
 <!-- <button routerLink=".." class="main-button">Tagasi</button> -->
+
+<!-- tekkis kui kirjutasin a-form ja tab
+(ngSubmit) on vormi sisestamise sündmus
+onSubmit() funktsioon läheb .ts failis käima (peab olema seal identsel kujul)
+#form on id="form" ehk annab vormile nimetuse
+"ngForm" on vormi tüüp -->
+<form (ngSubmit)="onSubmit(addItemForm)" #addItemForm="ngForm">
+    <label for="">Pilt</label><br>
+    <input type="text" placeholder="Eseme pilt" required><br>
+    <label for="">Nimetus</label><br>
+    <input ngModel name="title" type="text" placeholder="Eseme nimetus" required><br>
+    <label for="">Hind</label><br>
+    <input ngModel name="price" type="text" placeholder="Eseme hind" required><br>
+    <label for="">Kategooria</label><br>
+    <input ngModel name="category" type="text" placeholder="Eseme kategooria" required><br>
+    <button [disabled]="addItemForm.invalid">Lisa ese</button>
+</form>

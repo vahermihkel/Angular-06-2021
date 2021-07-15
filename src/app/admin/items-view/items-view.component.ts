@@ -17,7 +17,7 @@ export class ItemsViewComponent implements OnInit {
 
   onDeleteItem(item: any) {
     // elemendi järjekorranumbri leidmine massiivist
-    let index = this.items.indexOf(item);
+    let index = this.itemService.items.indexOf(item);
     // elemendi kustutamine massiivist
     this.itemService.items.splice(index, 1);
     this.items = this.itemService.items;
