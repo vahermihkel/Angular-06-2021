@@ -18,6 +18,8 @@ export class ItemAddComponent implements OnInit {
     console.log(form); //{valid: true, invalid: false, touched: true, untouched: false, value: {ngModeli name: sisestav väärtus, ngModeli name: sisestav väärtus}}
     console.log(form.value)
     if (form.valid) {
+            // ngModel name=""
+      // form.value = {imgSrc: vormi_sisestatud_väärtus, title: vormi_sisestaud_väärtus, ...}
       this.itemService.items.push(form.value);
     }
   }
