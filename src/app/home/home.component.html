@@ -6,9 +6,11 @@ button -->
 
 <!-- items = [{title:"asd",price:21},{...}] -->
 <!-- item = {title:"asd",price:21} -->
-<div class="item" *ngFor="let item of items">
-    <img src="{{ item.imgSrc }}" alt="">
-    <div class="item-title">{{ item.title }}</div><br>
-    <span class="item-price">{{ item.price }}</span><br><br>
+<div  class="item" *ngFor="let item of items">
+    <div routerLink="toode/{{ item.title }}/{{ item.category }}/{{ item.price }}/{{ item.category }}">
+        <img src="{{ item.imgSrc }}" alt="">
+        <div class="item-title">{{ item.title | shortenTitle }}</div><br>
+        <span class="item-price">{{ item.price | itemPrice }}</span><br><br>
+    </div>
     <button (click)="onAddToCart(item)" class="main-button">Lisa ostukorvi</button>
 </div>

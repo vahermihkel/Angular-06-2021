@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../models/item.model';
 import { CartService } from '../services/cart.service';
 import { ItemService } from '../services/item.service';
 
@@ -8,7 +9,7 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  items: any[] = [];
+  items: Item[] = [];
 
   // constructori kaudu võtan Service-t kasutusele
   // läheb käima kompileerimisel
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
     this.items = this.itemService.items;
   }
 
-  onAddToCart(item: any) {
+  onAddToCart(item: Item) {
     console.log(item);
     this.cartService.productsInCart.push(item);
   }

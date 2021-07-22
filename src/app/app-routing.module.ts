@@ -6,10 +6,12 @@ import { ItemEditComponent } from './admin/item-edit/item-edit.component';
 import { ItemsViewComponent } from './admin/items-view/items-view.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
+import { ViewItemComponent } from './home/view-item/view-item.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "ostukorv", component: CartComponent },
+  { path: "toode/:itemId/:itemPrice/:itemCategory/:itemImgSrc", component: ViewItemComponent },
   { path: "admin", component: AdminHomeComponent },
   { path: "admin/lisa-ese", component: ItemAddComponent },
   { path: "admin/muuda-eset", component: ItemEditComponent },

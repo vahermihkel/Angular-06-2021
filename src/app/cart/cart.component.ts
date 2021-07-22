@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../models/item.model';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  itemsInCart: any[] = [];
+  itemsInCart: Item[] = [];
   sumOfCart = 0;
 
   constructor(private cartService: CartService) {
@@ -24,7 +25,7 @@ export class CartComponent implements OnInit {
     this.calculateSumOfCart();
   }
 
-  onRemoveFromCart(item: any) {
+  onRemoveFromCart(item: Item) {
     // elemendi leidmine massiivis
     let index = this.itemsInCart.indexOf(item);
     // elemendi kustutamine massiivist

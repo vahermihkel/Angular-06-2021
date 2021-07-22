@@ -16,6 +16,9 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { ItemAddComponent } from './admin/item-add/item-add.component';
 import { ItemEditComponent } from './admin/item-edit/item-edit.component';
 import { ItemsViewComponent } from './admin/items-view/items-view.component';
+import { ViewItemComponent } from './home/view-item/view-item.component';
+import { ItemPricePipe } from './pipes/item-price.pipe';
+import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { ItemsViewComponent } from './admin/items-view/items-view.component';
     AdminHomeComponent,
     ItemAddComponent,
     ItemEditComponent,
-    ItemsViewComponent
+    ItemsViewComponent,
+    ViewItemComponent,
+    ItemPricePipe,
+    ShortenTitlePipe
   ],
   imports: [
     BrowserModule,

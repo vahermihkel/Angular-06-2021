@@ -7,8 +7,8 @@
 <div *ngFor="let item of itemsInCart">
     <img src="{{ item.imgSrc }}" alt="">
     <div class="item-title">{{ item.title }}</div><br>
-    <span class="item-price">{{ item.price }}</span><br><br>
+    <span class="item-price">{{ item.price | itemPrice }}</span><br><br>
     <button (click)="onRemoveFromCart(item)" class="main-button">X</button>
 </div>
 
-<div *ngIf="itemsInCart.length > 0">KOKKU: {{ sumOfCart }}</div>
+<div *ngIf="itemsInCart.length > 0">KOKKU: {{ sumOfCart | itemPrice }}</div>

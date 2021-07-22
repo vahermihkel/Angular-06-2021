@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
+    console.log("NAVBARI NGONIT LÄHEB KÄIMA")
     let lang = localStorage.getItem("language");
     if (lang) {
       this.translate.use(lang);
