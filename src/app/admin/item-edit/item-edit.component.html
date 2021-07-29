@@ -1,1 +1,14 @@
-<p>item-edit works!</p>
+<!-- <form (ngSubmit)="onSubmit()" #form="ngForm">
+</form> -->
+<!--                          id="form" ja tema tüüp on ngForm -->
+<form (ngSubmit)="onSubmit()" [formGroup]="editItemForm">
+    <label>Pilt</label><br>
+    <input formControlName="imgSrc" type="text" placeholder="Eseme pilt" required><br>
+    <label>Nimetus</label><br>
+    <input formControlName="title" type="text" placeholder="Eseme nimetus" required><br>
+    <label>Hind</label><br>
+    <input formControlName="price" type="text" placeholder="Eseme hind" required><br>
+    <label>Kategooria</label><br>
+    <input formControlName="category" type="text" placeholder="Eseme kategooria" required><br>
+    <button [disabled]="editItemForm.invalid">Lisa ese</button>
+</form>

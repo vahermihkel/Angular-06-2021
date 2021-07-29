@@ -6,8 +6,15 @@ button -->
 
 <!-- items = [{title:"asd",price:21},{...}] -->
 <!-- item = {title:"asd",price:21} -->
+<div>Sorteeri</div>
+<button (click)="onSortByTitleAsc()">Tähestiku järgi kasvavalt</button>
+<button (click)="onSortByTitleDesc()">Tähestiku järgi kahanevalt</button>
+<button (click)="onSortByPriceAsc()">Hinna järgi kasvavalt</button>
+<button (click)="onSortByPriceDesc()">Hinna järgi kahanevalt</button>
+<br><br><br>
+
 <div  class="item" *ngFor="let item of items">
-    <div routerLink="toode/{{ item.title }}/{{ item.category }}/{{ item.price }}/{{ item.category }}">
+    <div routerLink="toode/{{ item.title }}">
         <img src="{{ item.imgSrc }}" alt="">
         <div class="item-title">{{ item.title | shortenTitle }}</div><br>
         <span class="item-price">{{ item.price | itemPrice }}</span><br><br>

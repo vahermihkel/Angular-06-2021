@@ -11,10 +11,10 @@ import { ViewItemComponent } from './home/view-item/view-item.component';
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "ostukorv", component: CartComponent },
-  { path: "toode/:itemId/:itemPrice/:itemCategory/:itemImgSrc", component: ViewItemComponent },
+  { path: "toode/:itemId", component: ViewItemComponent },
   { path: "admin", component: AdminHomeComponent },
   { path: "admin/lisa-ese", component: ItemAddComponent },
-  { path: "admin/muuda-eset", component: ItemEditComponent },
+  { path: "admin/muuda-eset/:itemId", component: ItemEditComponent },
   { path: "admin/vaata-esemeid", component: ItemsViewComponent },
 ];
 

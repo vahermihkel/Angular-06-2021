@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Item } from 'src/app/models/item.model';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-item-edit',
@@ -6,10 +10,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-edit.component.css']
 })
 export class ItemEditComponent implements OnInit {
+  id!: string;
+  item!: Item;
+  editItemForm!: FormGroup;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+    private itemService: ItemService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    let urlId = this.route.snapshot.paramMap.get("itemId"); // itemi nimetuse saan URLst kätte: Aluminium HD Polarized
+    if (urlId) { // tahab kontrolli juhul kui ta ei saanud seda kätte, siis hüppab üle
+      this.id = urlId; // panen klassimuutujasse saadud ID
+      let itemFound = this.itemService.items.find(itemInService => itemInService.title == this.id); // otsin üles service-st id alusel
+      if (itemFound) { // kui leidis service-st
+        this.item = itemFound; // täida item sellega mis leidsid
+      }
+    }
+    this.editItemForm = new FormGroup({
+      imgSrc: new FormControl(this.item.imgSrc),
+      title: new FormControl(this.item.title),
+      price: new FormControl(this.item.price),
+      category: new FormControl(this.item.category)
+    });
+  }
+
+  onSubmit() {
+    if (this.editItemForm.valid) {
+      let itemIndex = this.itemService.items.indexOf(this.item);
+      // this.itemService.items.findIndex(item => item.title == this.id);
+      this.itemService.items[itemIndex] = this.editItemForm.value;
+      this.router.navigateByUrl("/admin/vaata-esemeid");
+    }
   }
 
 }

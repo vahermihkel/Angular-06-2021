@@ -8,6 +8,6 @@
     <div>{{ item.price }}</div>
     <div>{{ item.category }}</div>
     <button (click)="onDeleteItem(item)" class="main-button">Kustuta</button>
-    <button routerLink="/admin/muuda-eset" class="main-button">Muuda</button>
+    <button routerLink="/admin/muuda-eset/{{item.title}}" class="main-button">Muuda</button>
     <br>
 </div>

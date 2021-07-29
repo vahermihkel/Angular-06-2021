@@ -14,7 +14,6 @@ export class ViewItemComponent implements OnInit {
 
 
   item!: Item;
-  id!: string;
 
   constructor(private route: ActivatedRoute,
     private itemService: ItemService) { }
@@ -26,19 +25,14 @@ export class ViewItemComponent implements OnInit {
     console.log(this.route.snapshot);
     console.log(this.route.snapshot.paramMap);
 
-
     let urlId = this.route.snapshot.paramMap.get("itemId");
 
     if (urlId) {
-      this.id = urlId;
-      let itemFound = this.itemService.items.find(itemInService => itemInService.title == this.id);
+      let itemFound = this.itemService.items.find(itemInService => itemInService.title == urlId);
       if (itemFound) {
         this.item = itemFound;
       }
     }
-
-
-    console.log(this.id);
 
   }
 
