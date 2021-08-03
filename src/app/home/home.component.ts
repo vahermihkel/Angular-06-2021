@@ -18,12 +18,12 @@ export class HomeComponent implements OnInit {
 
   // läheb käima siis kui kasutaja läheb selle componendi HTMLi peale
   ngOnInit(): void {
-    this.items = this.itemService.items;
+    this.items = this.itemService.getItems();
   }
 
   onAddToCart(item: Item) {
     console.log(item);
-    this.cartService.productsInCart.push(item);
+    this.cartService.addToCart(item);
   }
 
   onSortByTitleAsc() {

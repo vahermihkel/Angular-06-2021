@@ -28,7 +28,7 @@ export class ViewItemComponent implements OnInit {
     let urlId = this.route.snapshot.paramMap.get("itemId");
 
     if (urlId) {
-      let itemFound = this.itemService.items.find(itemInService => itemInService.title == urlId);
+      let itemFound = this.itemService.getItem(urlId);
       if (itemFound) {
         this.item = itemFound;
       }

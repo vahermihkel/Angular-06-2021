@@ -13,15 +13,15 @@ export class ItemsViewComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.items = this.itemService.items;
+    this.items = this.itemService.getItems();
   }
 
   onDeleteItem(item: Item) {
     // elemendi järjekorranumbri leidmine massiivist
-    let index = this.itemService.items.indexOf(item);
+    let index = this.itemService.getItemIndex(item);
     // elemendi kustutamine massiivist
-    this.itemService.items.splice(index, 1);
-    this.items = this.itemService.items;
+    this.itemService.deleteItem(index)
+    this.items = this.itemService.getItems();
   }
 
 }

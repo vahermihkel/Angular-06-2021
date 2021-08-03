@@ -15,13 +15,13 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.itemsInCart = this.cartService.productsInCart;
+    this.itemsInCart = this.cartService.getItemsFromCart();
     this.calculateSumOfCart();
   }
 
   onEmptyCart() {
-    this.cartService.productsInCart = [];
-    this.itemsInCart = this.cartService.productsInCart;
+    this.cartService.deleteAllFromCart();
+    this.itemsInCart = this.cartService.getItemsFromCart();
     this.calculateSumOfCart();
   }
 
@@ -29,8 +29,8 @@ export class CartComponent implements OnInit {
     // elemendi leidmine massiivis
     let index = this.itemsInCart.indexOf(item);
     // elemendi kustutamine massiivist
-    this.cartService.productsInCart.splice(index, 1);
-    this.itemsInCart = this.cartService.productsInCart;
+    this.cartService.deleteOneFromCart(index);
+    this.itemsInCart = this.cartService.getItemsFromCart();
     this.calculateSumOfCart();
   }
 

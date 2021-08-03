@@ -22,7 +22,7 @@ export class ItemEditComponent implements OnInit {
     let urlId = this.route.snapshot.paramMap.get("itemId"); // itemi nimetuse saan URLst kätte: Aluminium HD Polarized
     if (urlId) { // tahab kontrolli juhul kui ta ei saanud seda kätte, siis hüppab üle
       this.id = urlId; // panen klassimuutujasse saadud ID
-      let itemFound = this.itemService.items.find(itemInService => itemInService.title == this.id); // otsin üles service-st id alusel
+      let itemFound = this.itemService.getItem(this.id) // otsin üles service-st id alusel
       if (itemFound) { // kui leidis service-st
         this.item = itemFound; // täida item sellega mis leidsid
       }
@@ -37,9 +37,9 @@ export class ItemEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editItemForm.valid) {
-      let itemIndex = this.itemService.items.indexOf(this.item);
+      let itemIndex = this.itemService.getItemIndex(this.item);
       // this.itemService.items.findIndex(item => item.title == this.id);
-      this.itemService.items[itemIndex] = this.editItemForm.value;
+      this.itemService.editItem(itemIndex, this.editItemForm.value);
       this.router.navigateByUrl("/admin/vaata-esemeid");
     }
   }
