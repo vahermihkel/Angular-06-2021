@@ -16,6 +16,13 @@ onSubmit() funktsioon läheb .ts failis käima (peab olema seal identsel kujul)
     <label>Hind</label><br>
     <input ngModel name="price" type="text" placeholder="Eseme hind" required><br>
     <label>Kategooria</label><br>
-    <input ngModel name="category" type="text" placeholder="Eseme kategooria" required><br>
+    <!-- <input ngModel name="category" type="text" placeholder="Eseme kategooria" required><br> -->
+    <select name="category" ngModel required>
+        <!-- <option value="sunglasses">sunglasses</option>
+        <option value="glasses">glasses</option>
+        <option value="spectacle case">spectacle case</option> -->
+        <option disabled selected value="">Vali kategooria</option>
+        <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+    </select><br>
     <button [disabled]="addItemForm.invalid">Lisa ese</button>
 </form>

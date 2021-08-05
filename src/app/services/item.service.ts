@@ -21,10 +21,10 @@ export class ItemService {
     return this.items.slice();
   }
 
-  // = this.itemService.items.find(item => {item.title == this.id});
+  // = this.itemService.items.find(item => item.title == this.id);
   // = this.itemService.getItem(this.id);
   getItem(id: string): Item | undefined {
-    return this.items.find(item => { item.title == id });
+    return this.items.find(item => item.title == id);
   }
 
   // = this.itemService.items.indexOf(this.item);

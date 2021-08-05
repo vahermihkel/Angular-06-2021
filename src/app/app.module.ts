@@ -19,6 +19,9 @@ import { ItemsViewComponent } from './admin/items-view/items-view.component';
 import { ViewItemComponent } from './home/view-item/view-item.component';
 import { ItemPricePipe } from './pipes/item-price.pipe';
 import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
+import { CategoryComponent } from './admin/category/category.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselComponent } from './home/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
     ItemsViewComponent,
     ViewItemComponent,
     ItemPricePipe,
-    ShortenTitlePipe
+    ShortenTitlePipe,
+    CategoryComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
         }
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

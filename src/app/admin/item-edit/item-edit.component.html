@@ -9,6 +9,9 @@
     <label>Hind</label><br>
     <input formControlName="price" type="text" placeholder="Eseme hind" required><br>
     <label>Kategooria</label><br>
-    <input formControlName="category" type="text" placeholder="Eseme kategooria" required><br>
+    <!-- <input formControlName="category" type="text" placeholder="Eseme kategooria" required><br> -->
+    <select formControlName="category" required>
+        <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+    </select><br>
     <button [disabled]="editItemForm.invalid">Lisa ese</button>
 </form>

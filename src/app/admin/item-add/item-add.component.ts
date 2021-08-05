@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Item } from 'src/app/models/item.model';
 import { ItemService } from 'src/app/services/item.service';
+import { CategoryService } from '../category/category.service';
 
 @Component({
   selector: 'app-item-add',
@@ -8,10 +10,26 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./item-add.component.css']
 })
 export class ItemAddComponent implements OnInit {
+  // items: any[] = [{title: "sunglass", category: "sunglasses"},{},{}];
+  categories: string[] = [];
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService,
+    private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.categories = this.categoryService.getCategories();
+
+    // let cat = this.categoryService.getCategoriesWithoutSlice();
+    // cat.sort((a, b) => a.localeCompare(b));
+    // console.log(cat);
+    // console.log(this.categoryService.getCategoriesWithoutSlice());
+
+    // console.log();
+
+    // let cat2 = this.categoryService.getCategories();
+    // cat2.sort((a, b) => a.localeCompare(b));
+    // console.log(cat2);
+    // console.log(this.categoryService.getCategories());
   }
 
   onSubmit(form: NgForm) {
