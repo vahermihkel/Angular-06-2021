@@ -1,0 +1,45 @@
+<button routerLink="/admin" class="main-button">Tagasi</button>
+<br>
+
+<form (ngSubmit)="onSubmitConfig()" [formGroup]="carouselConfigForm">
+    <label for="">Kiirus</label><br>
+    <input type="number" formControlName="interval"><br>
+    <label for="wrap">Ei jää lõpus seisma</label><br>
+    <input type="checkbox" id="wrap" formControlName="wrap"><br>
+    <label for="keyboard">Vasak ja parem nool liigutab</label><br>
+    <input type="checkbox" id="keyboard" formControlName="keyboard"><br>
+    <label for="pauseOnHover">Paus hiirega peale minnes</label><br>
+    <input type="checkbox" id="pauseOnHover" formControlName="pauseOnHover"><br>
+    <button>Salvesta</button>
+</form>
+
+<br><br>
+
+<form (ngSubmit)="onSubmitImage(addImageForm)" #addImageForm="ngForm">
+    <label>Url</label><br>
+    <input ngModel name="url" type="text" required><br>
+    <label>Header</label><br>
+    <input ngModel name="header" type="text" required><br>
+    <label>Description</label><br>
+    <input ngModel name="description" type="text" required><br>
+    <label>Alternative text</label><br>
+    <input ngModel name="alt" type="text" required><br>
+    <button [disabled]="addImageForm.invalid">Sisesta</button>
+</form>
+
+<br><br>
+
+<div *ngFor="let image of carouselImages">
+    <div *ngIf="!image.isEditState">
+        <img style="height:200px" src="{{image.url}}" alt="">
+        <div>{{ image.header }}</div>
+        <div>{{ image.description }}</div>
+        <div>{{ image.alt }}</div>
+    </div>
+    <div *ngIf="image.isEditState">
+        <!-- <form (ngSubmit)="onEditImage()" [formGroup]="editImageForm">
+        </form> -->
+    </div>
+    <button (click)="onDeleteImage(image)">X</button>
+    <button (click)="onChangeImage(image)">Muuda pilti</button>
+</div>
