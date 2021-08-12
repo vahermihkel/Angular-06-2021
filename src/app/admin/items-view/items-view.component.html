@@ -2,6 +2,10 @@
 
 <br><br>
 
+<button (click)="onSendItemsToDatabase()">Salvesta tooted andmebaasi</button>
+
+<br><br>
+
 <div *ngFor="let item of items">
     <div>{{ item.imgSrc }}</div>
     <div>{{ item.title }}</div>

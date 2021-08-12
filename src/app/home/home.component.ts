@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
 
   // läheb käima siis kui kasutaja läheb selle componendi HTMLi peale
   ngOnInit(): void {
-    this.items = this.itemService.getItems();
+    // this.items = this.itemService.getItems();
+    this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => {
+      this.items = firebaseItems;
+      this.itemService.saveToServiceFromDatabase(firebaseItems);
+    });
   }
 
   onAddToCart(item: Item) {

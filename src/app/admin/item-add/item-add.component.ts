@@ -40,6 +40,7 @@ export class ItemAddComponent implements OnInit {
       // form.value = {imgSrc: vormi_sisestatud_väärtus, title: vormi_sisestaud_väärtus, ...}
       // this.itemService.items.push(form.value);
       this.itemService.addItem(form.value);
+      form.reset();
     }
   }
 }

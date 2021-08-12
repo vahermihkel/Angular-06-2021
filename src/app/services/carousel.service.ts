@@ -5,6 +5,7 @@ import { CarouselImage } from '../models/carousel-image.model';
   providedIn: 'root'
 })
 export class CarouselService {
+  //firebase-i - url firebaseurl.com/images.json
   private images = [
     {
       url: "https://picsum.photos/id/700/900/500",
@@ -28,6 +29,7 @@ export class CarouselService {
       alt: "Random 5 slide"
     }]
 
+  // localStorage-sse
   interval = 5000;
   wrap = true;
   keyboard = true;

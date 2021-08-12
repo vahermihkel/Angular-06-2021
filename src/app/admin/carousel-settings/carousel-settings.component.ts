@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CarouselImage } from 'src/app/models/carousel-image.model';
 import { CarouselService } from 'src/app/services/carousel.service';
 
@@ -17,7 +17,7 @@ export class CarouselSettingsComponent implements OnInit {
   ngOnInit(): void {
     this.carouselImages = this.carouselService.getImages();
     this.carouselConfigForm = new FormGroup({
-      interval: new FormControl(this.carouselService.interval),
+      interval: new FormControl(this.carouselService.interval, Validators.pattern("^[0-9]*$")),
       wrap: new FormControl(this.carouselService.wrap),
       keyboard: new FormControl(this.carouselService.keyboard),
       pauseOnHover: new FormControl(this.carouselService.pauseOnHover)
@@ -38,7 +38,7 @@ export class CarouselSettingsComponent implements OnInit {
   }
 
   onEditImage() {
-    
+
   }
 
   onDeleteImage(image: CarouselImage) {

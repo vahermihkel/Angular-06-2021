@@ -3,14 +3,14 @@
 
 <form (ngSubmit)="onSubmitConfig()" [formGroup]="carouselConfigForm">
     <label for="">Kiirus</label><br>
-    <input type="number" formControlName="interval"><br>
+    <input type="text" formControlName="interval"><br>
     <label for="wrap">Ei jää lõpus seisma</label><br>
     <input type="checkbox" id="wrap" formControlName="wrap"><br>
     <label for="keyboard">Vasak ja parem nool liigutab</label><br>
     <input type="checkbox" id="keyboard" formControlName="keyboard"><br>
     <label for="pauseOnHover">Paus hiirega peale minnes</label><br>
     <input type="checkbox" id="pauseOnHover" formControlName="pauseOnHover"><br>
-    <button>Salvesta</button>
+    <button [disabled]="carouselConfigForm.invalid">Salvesta</button>
 </form>
 
 <br><br>
