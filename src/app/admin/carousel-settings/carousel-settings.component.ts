@@ -18,7 +18,7 @@ export class CarouselSettingsComponent implements OnInit {
     this.carouselImages = this.carouselService.getImages();
     this.carouselConfigForm = new FormGroup({
       interval: new FormControl(this.carouselService.interval, Validators.pattern("^[0-9]*$")),
-      wrap: new FormControl(this.carouselService.wrap),
+      wrap: new FormControl(this.carouselService.wrap, Validators.required),
       keyboard: new FormControl(this.carouselService.keyboard),
       pauseOnHover: new FormControl(this.carouselService.pauseOnHover)
     });

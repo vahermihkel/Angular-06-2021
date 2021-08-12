@@ -1,5 +1,7 @@
 .item {
     margin-left: 40px;
+    height: 400px;
+    width: 300px;
 }
 
 .item-title {
@@ -11,4 +13,8 @@
     background-color: gray;
     padding: 10px;
     border-radius: 7px 0 7px 7px;
+}
+
+.special-background {
+    background-color: blueviolet;
 }
