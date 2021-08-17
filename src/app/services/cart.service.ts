@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Item } from '../models/item.model';
 
 @Injectable({
@@ -10,6 +11,7 @@ export class CartService {
   private productsInCart: Item[] = [];
   // võtan seda väärtust CartComponent sees ngOnInit() funktsioonis
   // pannes selle väärtuse üleval olevasse muutujasse
+  cartChanged = new Subject();
 
   constructor() { }
 

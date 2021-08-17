@@ -22,12 +22,15 @@ export class HomeComponent implements OnInit {
     this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => {
       this.items = firebaseItems;
       this.itemService.saveToServiceFromDatabase(firebaseItems);
+      console.log("siia jõuan hiljem");
     });
+    console.log("siia jõuan varem");
   }
 
   onAddToCart(item: Item) {
     console.log(item);
     this.cartService.addToCart(item);
+    this.cartService.cartChanged.next();
   }
 
   onSortByTitleAsc() {

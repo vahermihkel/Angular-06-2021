@@ -12,7 +12,7 @@ export class ItemService {
 
   private url = "https://webshop-07-8194e-default-rtdb.europe-west1.firebasedatabase.app/items.json";
 
-  backendUrl = "http://localhost:8080/api/items"
+  // backendUrl = "http://localhost:8080/api/items"
 
   constructor(private http: HttpClient) { }
 

@@ -27,17 +27,20 @@ export class ItemEditComponent implements OnInit {
     let urlId = this.route.snapshot.paramMap.get("itemId"); // itemi nimetuse saan URLst kätte: Aluminium HD Polarized
     if (urlId) { // tahab kontrolli juhul kui ta ei saanud seda kätte, siis hüppab üle
       this.id = urlId; // panen klassimuutujasse saadud ID
-      let itemFound = this.itemService.getItem(this.id) // otsin üles service-st id alusel
-      if (itemFound) { // kui leidis service-st
-        this.item = itemFound; // täida item sellega mis leidsid
-      }
-    }
-    this.editItemForm = new FormGroup({
-      imgSrc: new FormControl(this.item.imgSrc),
-      title: new FormControl(this.item.title),
-      price: new FormControl(this.item.price),
-      category: new FormControl(this.item.category)
-    });
+      this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => { 
+        this.itemService.saveToServiceFromDatabase(firebaseItems);
+        let itemFound = this.itemService.getItem(this.id) // otsin üles service-st id alusel
+        if (itemFound) { // kui leidis service-st
+          this.item = itemFound; // täida item sellega mis leidsid
+        }
+        this.editItemForm = new FormGroup({
+          imgSrc: new FormControl(this.item.imgSrc),
+          title: new FormControl(this.item.title),
+          price: new FormControl(this.item.price),
+          category: new FormControl(this.item.category)
+        });
+      })
+    } 
   }
 
   onSubmit() {

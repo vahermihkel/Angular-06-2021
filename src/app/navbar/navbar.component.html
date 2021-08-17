@@ -5,5 +5,5 @@
         <button (click)="useLanguage('en')">en</button>
         <button (click)="useLanguage('ee')">ee</button>
     </div>   
-    <div routerLink="ostukorv">{{'Mine ostukorvi' | translate }}</div>
+    <div class="sum-of-cart" routerLink="ostukorv">Ostukorv <br> {{ sumOfCart | itemPrice }}</div>
 </div>

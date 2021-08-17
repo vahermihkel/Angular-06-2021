@@ -27,13 +27,18 @@ export class ViewItemComponent implements OnInit {
 
     let urlId = this.route.snapshot.paramMap.get("itemId");
 
-    if (urlId) {
-      let itemFound = this.itemService.getItem(urlId);
-      if (itemFound) {
-        this.item = itemFound;
+
+    this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => {
+      this.itemService.saveToServiceFromDatabase(firebaseItems);
+      if (urlId) {
+        let itemFound = this.itemService.getItem(urlId);
+        if (itemFound) {
+          this.item = itemFound;
+        }
       }
-    }
+    })
+
+    // this.item.category;
 
   }
-
 }

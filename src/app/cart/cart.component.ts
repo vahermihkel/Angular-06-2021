@@ -23,6 +23,7 @@ export class CartComponent implements OnInit {
     this.cartService.deleteAllFromCart();
     this.itemsInCart = this.cartService.getItemsFromCart();
     this.calculateSumOfCart();
+    this.cartService.cartChanged.next();
   }
 
   onRemoveFromCart(item: Item) {
@@ -32,6 +33,7 @@ export class CartComponent implements OnInit {
     this.cartService.deleteOneFromCart(index);
     this.itemsInCart = this.cartService.getItemsFromCart();
     this.calculateSumOfCart();
+    this.cartService.cartChanged.next();
   }
 
   calculateSumOfCart() {
