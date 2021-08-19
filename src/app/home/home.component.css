@@ -4,17 +4,14 @@
     width: 300px;
 }
 
-.item-title {
-    font-size: 20px;
-    color: rgb(43, 45, 53);
-}
-
-.item-price {
-    background-color: gray;
-    padding: 10px;
-    border-radius: 7px 0 7px 7px;
-}
-
 .special-background {
     background-color: blueviolet;
+}
+
+.active {
+    border: 1px solid green;
+}
+
+.inactive {
+    border: 1px solid red;
 }

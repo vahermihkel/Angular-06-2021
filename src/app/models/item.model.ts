@@ -13,7 +13,8 @@ export class Item {
         public imgSrc: string,
         public title: string,
         public price: number,
-        public category: string
+        public category: string,
+        public isActive: boolean
     ) { }
 }
 

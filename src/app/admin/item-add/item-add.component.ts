@@ -39,8 +39,20 @@ export class ItemAddComponent implements OnInit {
       // ngModel name=""
       // form.value = {imgSrc: vormi_sisestatud_väärtus, title: vormi_sisestaud_väärtus, ...}
       // this.itemService.items.push(form.value);
-      this.itemService.addItem(form.value);
+      let item = new Item(
+        form.value.imgSrc,
+        form.value.title,
+        form.value.price,
+        form.value.category,
+        true);
+      this.itemService.addItem(item);
       form.reset();
     }
   }
 }
+
+// muutuja: TÜÜP;
+// function(muutuja: TÜÜP)
+// function(): tagastusTÜÜP
+// this.http.get<PÄRINGU_TAGASTUSE_TÜÜP>("url")
+// new KLASS/TÜÜP("SIIA", "PANEN", "MIS", "KLASS", "VAJAB"); (mis on constructori sees)

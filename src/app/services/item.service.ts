@@ -32,8 +32,11 @@ export class ItemService {
   // this.itemService.items.push(form.value);
   // this.itemService.addItem(form.value);
   addItem(item: Item): void {
-    this.items.push(item);
-    this.saveItemsToDatebase().subscribe();
+    this.getItemsFromDatabase().subscribe(firebaseItems => {
+      this.items = firebaseItems;
+      this.items.push(item);
+      this.saveItemsToDatebase().subscribe();
+    })
   }
 
   // = this.itemService.items;

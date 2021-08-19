@@ -27,7 +27,7 @@ export class ItemEditComponent implements OnInit {
     let urlId = this.route.snapshot.paramMap.get("itemId"); // itemi nimetuse saan URLst kätte: Aluminium HD Polarized
     if (urlId) { // tahab kontrolli juhul kui ta ei saanud seda kätte, siis hüppab üle
       this.id = urlId; // panen klassimuutujasse saadud ID
-      this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => { 
+      this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => {
         this.itemService.saveToServiceFromDatabase(firebaseItems);
         let itemFound = this.itemService.getItem(this.id) // otsin üles service-st id alusel
         if (itemFound) { // kui leidis service-st
@@ -37,17 +37,24 @@ export class ItemEditComponent implements OnInit {
           imgSrc: new FormControl(this.item.imgSrc),
           title: new FormControl(this.item.title),
           price: new FormControl(this.item.price),
-          category: new FormControl(this.item.category)
+          category: new FormControl(this.item.category),
+          isActive: new FormControl(this.item.isActive)
         });
       })
-    } 
+    }
   }
 
   onSubmit() {
     if (this.editItemForm.valid) {
       let itemIndex = this.itemService.getItemIndex(this.item);
       // this.itemService.items.findIndex(item => item.title == this.id);
-      this.itemService.editItem(itemIndex, this.editItemForm.value).subscribe(() => {
+      let item = new Item(
+        this.editItemForm.value.imgSrc,
+        this.editItemForm.value.title,
+        this.editItemForm.value.price,
+        this.editItemForm.value.category,
+        this.editItemForm.value.isActive)
+      this.itemService.editItem(itemIndex, item).subscribe(() => {
         this.router.navigateByUrl("/admin/vaata-esemeid");
       });
     }

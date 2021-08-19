@@ -1,0 +1,10 @@
+<button (click)="onItemActiveChange()">
+    <span *ngIf="!item.isActive">Aktiivseks</span>
+    <span *ngIf="item.isActive">Mitteaktiivseks</span>
+</button>
+<div routerLink="toode/{{ item.title }}">
+    <img src="{{ item.imgSrc }}" alt="">
+    <div class="item-title">{{ item.title | shortenTitle }}</div><br>
+    <span class="item-price">{{ item.price | itemPrice }}</span><br><br>
+</div>
+<button (click)="onAddToCart(item)" class="main-button">Lisa ostukorvi</button>

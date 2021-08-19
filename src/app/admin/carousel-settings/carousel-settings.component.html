@@ -1,4 +1,5 @@
-<button routerLink="/admin" class="main-button">Tagasi</button>
+<app-back-button [url]="'/admin'" [showWarning]="true"></app-back-button>
+
 <br>
 
 <form (ngSubmit)="onSubmitConfig()" [formGroup]="carouselConfigForm">

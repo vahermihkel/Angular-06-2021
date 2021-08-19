@@ -1,4 +1,5 @@
-<button routerLink="/admin" class="main-button">Tagasi</button>
+<app-back-button [url]="'/admin'"></app-back-button>
+
 
 <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <label>Kategooria</label><br>

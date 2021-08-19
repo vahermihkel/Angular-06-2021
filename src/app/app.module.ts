@@ -23,6 +23,8 @@ import { CategoryComponent } from './admin/category/category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { CarouselSettingsComponent } from './admin/carousel-settings/carousel-settings.component';
+import { ItemCardComponent } from './home/item-card/item-card.component';
+import { BackButtonComponent } from './admin/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { CarouselSettingsComponent } from './admin/carousel-settings/carousel-se
     ShortenTitlePipe,
     CategoryComponent,
     CarouselComponent,
-    CarouselSettingsComponent
+    CarouselSettingsComponent,
+    ItemCardComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,

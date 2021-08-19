@@ -27,12 +27,6 @@ export class HomeComponent implements OnInit {
     console.log("siia jõuan varem");
   }
 
-  onAddToCart(item: Item) {
-    console.log(item);
-    this.cartService.addToCart(item);
-    this.cartService.cartChanged.next();
-  }
-
   onSortByTitleAsc() {
     this.items.sort((currentItem, nextItem) => currentItem.title.localeCompare(nextItem.title));
   }

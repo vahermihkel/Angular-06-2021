@@ -1,3 +1,5 @@
+<app-back-button [url]="'/admin/vaata-esemeid'"></app-back-button>
+
 <!-- <form (ngSubmit)="onSubmit()" #form="ngForm">
 </form> -->
 <!--                          id="form" ja tema tüüp on ngForm -->
@@ -13,5 +15,6 @@
     <select formControlName="category" required>
         <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
     </select><br>
+    <input formControlName="isActive" type="checkbox"><br>
     <button [disabled]="editItemForm.invalid">Lisa ese</button>
 </form>

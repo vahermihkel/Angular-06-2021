@@ -15,11 +15,15 @@ button -->
 <button (click)="onSortByPriceDesc()">Hinna järgi kahanevalt</button>
 <br><br><br>
 
-<div [ngClass]="{'special-background': item.title.substring(0,1)=='A'}" class="item" *ngFor="let item of items">
-    <div routerLink="toode/{{ item.title }}">
-        <img src="{{ item.imgSrc }}" alt="">
-        <div class="item-title">{{ item.title | shortenTitle }}</div><br>
-        <span class="item-price">{{ item.price | itemPrice }}</span><br><br>
-    </div>
-    <button (click)="onAddToCart(item)" class="main-button">Lisa ostukorvi</button>
+<div 
+    [ngClass]="{
+        'special-background': item.title.substring(0,1)=='A',
+        'active': item.isActive, 
+        'inactive': !item.isActive}" 
+    *ngFor="let item of items">
+    <app-item-card 
+        [item]="item"></app-item-card>
 </div>
+
+<!-- [class.active]="item.isActive" 
+        [class.inactive]="!item.isActive" -->
