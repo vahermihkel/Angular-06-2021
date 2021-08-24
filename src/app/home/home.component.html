@@ -17,12 +17,13 @@ button -->
 
 <div 
     [ngClass]="{
-        'special-background': item.title.substring(0,1)=='A',
-        'active': item.isActive, 
-        'inactive': !item.isActive}" 
-    *ngFor="let item of items">
+        'special-background': itemShown.title.substring(0,1)=='A',
+        'active': itemShown.isActive, 
+        'inactive': !itemShown.isActive}" 
+    *ngFor="let itemShown of items">
     <app-item-card 
-        [item]="item"></app-item-card>
+        [item]="itemShown"></app-item-card>
+<!-- Input() item -->
 </div>
 
 <!-- [class.active]="item.isActive" 

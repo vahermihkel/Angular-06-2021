@@ -6,8 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./back-button.component.css']
 })
 export class BackButtonComponent implements OnInit {
-  @Input() url!: string;
-  @Input() showWarning!: boolean;
+  @Input() url!: string; // default väärtus ""
+  @Input() showWarning!: boolean; // default väärtus false
+  // number default väärtus 0
+  // Objecti default väärtus undefined
 
   constructor() { }
 

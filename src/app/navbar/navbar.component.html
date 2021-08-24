@@ -1,6 +1,8 @@
 <div class="navbar">
     <img routerLink="/" src="assets/webshio.png" alt="">
-    <div routerLink="admin">{{'Mine admin lehele' | translate}}</div>
+    <div *ngIf="isLoggedIn" routerLink="admin">{{'Mine admin lehele' | translate}}</div>
+    <div *ngIf="isLoggedIn" (click)="onLogout()">{{'Logi välja' | translate}}</div>
+    <div *ngIf="!isLoggedIn" routerLink="logi-sisse">{{'Logi sisse' | translate}}</div>
     <div class="language-buttons">
         <button (click)="useLanguage('en')">en</button>
         <button (click)="useLanguage('ee')">ee</button>

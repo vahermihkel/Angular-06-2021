@@ -25,6 +25,9 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { CarouselSettingsComponent } from './admin/carousel-settings/carousel-settings.component';
 import { ItemCardComponent } from './home/item-card/item-card.component';
 import { BackButtonComponent } from './admin/back-button/back-button.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { BackButtonComponent } from './admin/back-button/back-button.component';
     CarouselComponent,
     CarouselSettingsComponent,
     ItemCardComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    LoginComponent,
+    SignupComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

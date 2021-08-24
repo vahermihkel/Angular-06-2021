@@ -14,7 +14,9 @@
     <!-- <input formControlName="category" type="text" placeholder="Eseme kategooria" required><br> -->
     <select formControlName="category" required>
         <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
-    </select><br>
-    <input formControlName="isActive" type="checkbox"><br>
+    </select><br><br>
+    <input formControlName="isActive" type="checkbox" id="isActive">
+    <label for="isActive">Toode aktiivne</label>
+    <br>
     <button [disabled]="editItemForm.invalid">Lisa ese</button>
 </form>
