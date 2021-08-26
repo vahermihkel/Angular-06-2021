@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = sessionStorage.getItem("userData") ? true : false;
-    
+
     this.authService.loggedInChanged.subscribe(() => {
       this.isLoggedIn = sessionStorage.getItem("userData") ? true : false;
     });
@@ -51,6 +51,6 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     sessionStorage.removeItem("userData");
-    this.isLoggedIn = false;
+    this.authService.loggedInChanged.next();
   }
 }

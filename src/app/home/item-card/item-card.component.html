@@ -1,4 +1,4 @@
-<button (click)="onItemActiveChange()">
+<button (click)="onItemActiveChange()" *ngIf="isLoggedIn">
     <span *ngIf="!item.isActive">Aktiivseks</span>
     <span *ngIf="item.isActive">Mitteaktiivseks</span>
 </button>

@@ -15,14 +15,16 @@ button -->
 <button (click)="onSortByPriceDesc()">Hinna järgi kahanevalt</button>
 <br><br><br>
 
+<app-spinner *ngIf="isLoading"></app-spinner>
+
 <div 
     [ngClass]="{
         'special-background': itemShown.title.substring(0,1)=='A',
-        'active': itemShown.isActive, 
-        'inactive': !itemShown.isActive}" 
+        'active': itemShown.isActive && isLoggedIn, 
+        'inactive': !itemShown.isActive && isLoggedIn}" 
     *ngFor="let itemShown of items">
-    <app-item-card 
-        [item]="itemShown"></app-item-card>
+    <app-item-card *ngIf="isLoggedIn || (!isLoggedIn && itemShown.isActive)"
+        [item]="itemShown" [isLoggedIn]="isLoggedIn" (activeChangedEvent)="saveToDatabaseOnActiveChanged($event)"></app-item-card>
 <!-- Input() item -->
 </div>
 

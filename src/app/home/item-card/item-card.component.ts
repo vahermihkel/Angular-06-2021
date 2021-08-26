@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { CartService } from 'src/app/services/cart.service';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-item-card',
@@ -9,8 +10,12 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ItemCardComponent implements OnInit {
   @Input() item!: Item;
+  @Output() activeChangedEvent = new EventEmitter();
+  @Input() isLoggedIn = false; // home-s saadate isLoggedIn siia
+  // htmls panete ngIf külge "aktiivseks/mittaktiivseks nupule"
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private itemService: ItemService) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +28,7 @@ export class ItemCardComponent implements OnInit {
 
   onItemActiveChange() {
     this.item.isActive = !this.item.isActive;
+    this.itemService.saveItemsToDatebase().subscribe();
+    this.activeChangedEvent.emit(this.item);
   }
 }
