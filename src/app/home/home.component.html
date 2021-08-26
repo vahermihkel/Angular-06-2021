@@ -17,6 +17,8 @@ button -->
 
 <app-spinner *ngIf="isLoading"></app-spinner>
 
+<div *ngFor="let category of items | uniqueCategory">{{ category }}</div>
+
 <div 
     [ngClass]="{
         'special-background': itemShown.title.substring(0,1)=='A',
