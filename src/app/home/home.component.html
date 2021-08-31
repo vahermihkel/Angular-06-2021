@@ -9,15 +9,14 @@ button -->
 <!-- items = [{title:"asd",price:21},{...}] -->
 <!-- item = {title:"asd",price:21} -->
 <div>Sorteeri</div>
-<button (click)="onSortByTitleAsc()">Tähestiku järgi kasvavalt</button>
-<button (click)="onSortByTitleDesc()">Tähestiku järgi kahanevalt</button>
-<button (click)="onSortByPriceAsc()">Hinna järgi kasvavalt</button>
-<button (click)="onSortByPriceDesc()">Hinna järgi kahanevalt</button>
+<button (click)="onSortByTitle()">Tähestiku järgi</button>
+<button (click)="onSortByPrice()">Hinna järgi</button>
 <br><br><br>
 
 <app-spinner *ngIf="isLoading"></app-spinner>
 
-<div *ngFor="let category of items | uniqueCategory">{{ category }}</div>
+<div (click)="onCategoryClick('all')">Kõik kategooriad</div>
+<div (click)="onCategoryClick(category)" *ngFor="let category of categories">{{ category.charAt(0).toUpperCase() + category.slice(1)  }}</div>
 
 <div 
     [ngClass]="{

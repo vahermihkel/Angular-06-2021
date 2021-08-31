@@ -8,7 +8,8 @@ import { Item } from '../models/item.model';
 export class CartService {
   // iga klikiga HomeComponent sees oleva funktsiooniga onAddToCart()
   // lisan siia uue elemendi
-  private productsInCart: Item[] = [];
+  // {cartItem: {title: string, price:number}, quantity: number}
+  private productsInCart: { cartItem: Item, quantity: number }[] = [];
   // võtan seda väärtust CartComponent sees ngOnInit() funktsioonis
   // pannes selle väärtuse üleval olevasse muutujasse
   cartChanged = new Subject();
@@ -18,12 +19,20 @@ export class CartService {
   // this.cartService.productsInCart.push(item);
   // this.cartService.addToCart(item);
   addToCart(item: Item): void {
-    this.productsInCart.push(item);
+    let cartItem = this.productsInCart.find(productInCart => productInCart.cartItem.title == item.title);
+    if (cartItem) {
+      // cartItem.quantity = cartItem.quantity + 1;
+      // cartItem.quantity += 1;
+      // cartItem.quantity++;
+      cartItem.quantity++;
+    } else {
+      this.productsInCart.push({ cartItem: item, quantity: 1 });
+    }
   }
 
   // = this.cartService.productsInCart
   // = this.cartService.getItemsFromCart();
-  getItemsFromCart(): Item[] {
+  getItemsFromCart(): { cartItem: Item, quantity: number }[] {
     return this.productsInCart.slice();
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Item } from '../models/item.model';
+import { UniqueCategoryPipe } from '../pipes/unique-category.pipe';
 import { CartService } from '../services/cart.service';
 import { ItemService } from '../services/item.service';
 
@@ -11,14 +12,18 @@ import { ItemService } from '../services/item.service';
 })
 export class HomeComponent implements OnInit {
   items: Item[] = [];
+  categories: string[] = [];
   isLoading = false;
   isLoggedIn = false;
+  isPriceSortAsc = true;
+  isTitleSortAsc = true;
 
   // constructori kaudu võtan Service-t kasutusele
   // läheb käima kompileerimisel
   constructor(private cartService: CartService,
     private itemService: ItemService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private uniqueCategoryPipe: UniqueCategoryPipe) { }
 
   // läheb käima siis kui kasutaja läheb selle componendi HTMLi peale
   ngOnInit(): void {
@@ -35,24 +40,56 @@ export class HomeComponent implements OnInit {
       this.items = firebaseItems;
       this.itemService.saveToServiceFromDatabase(firebaseItems);
       console.log("siia jõuan hiljem");
+      this.categories = this.uniqueCategoryPipe.transform(this.items);
     });
     console.log("siia jõuan varem");
   }
 
-  onSortByTitleAsc() {
-    this.items.sort((currentItem, nextItem) => currentItem.title.localeCompare(nextItem.title));
+  onSortByTitle() {
+    if (this.isTitleSortAsc) {
+      this.items.sort((currentItem, nextItem) => currentItem.title.localeCompare(nextItem.title));
+      this.isTitleSortAsc = false;
+    } else {
+      this.items.sort((currentItem, nextItem) => nextItem.title.localeCompare(currentItem.title));
+      this.isTitleSortAsc = true;
+    }
   }
 
-  onSortByTitleDesc() {
-    this.items.sort((currentItem, nextItem) => nextItem.title.localeCompare(currentItem.title));
+  onSortByPrice() {
+    if (this.isPriceSortAsc) {
+      this.items.sort((currentItem, nextItem) => currentItem.price - nextItem.price);
+      this.isPriceSortAsc = false;
+    } else {
+      this.items.sort((currentItem, nextItem) => nextItem.price - currentItem.price);
+      this.isPriceSortAsc = true;
+    }
   }
 
-  onSortByPriceAsc() {
-    this.items.sort((currentItem, nextItem) => currentItem.price - nextItem.price);
-  }
+  // onSortByTitleAsc() {
+  //   this.items.sort((currentItem, nextItem) => currentItem.title.localeCompare(nextItem.title));
+  // }
 
-  onSortByPriceDesc() {
-    this.items.sort((currentItem, nextItem) => nextItem.price - currentItem.price);
+  // onSortByTitleDesc() {
+  //   this.items.sort((currentItem, nextItem) => nextItem.title.localeCompare(currentItem.title));
+  // }
+
+  // onSortByPriceAsc() {
+  //   this.items.sort((currentItem, nextItem) => currentItem.price - nextItem.price);
+  // }
+
+  // onSortByPriceDesc() {
+  //   this.items.sort((currentItem, nextItem) => nextItem.price - currentItem.price);
+  // }
+
+  onCategoryClick(category: string) {
+    this.itemService.getItemsFromDatabase().subscribe((firebaseItems) => {
+      this.isLoading = false;
+      this.items = firebaseItems;
+      this.itemService.saveToServiceFromDatabase(firebaseItems);
+      if (category != 'all') {
+        this.items = this.items.filter(item => item.category == category);
+      }
+    });
   }
 
   saveToDatabaseOnActiveChanged(item: Item) {

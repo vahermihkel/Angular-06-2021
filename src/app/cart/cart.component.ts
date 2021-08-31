@@ -8,7 +8,8 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  itemsInCart: Item[] = [];
+  itemsInCart: { cartItem: Item, quantity: number }[] = [];
+  itemsCount = 0;
   sumOfCart = 0;
 
   constructor(private cartService: CartService) {
@@ -26,7 +27,7 @@ export class CartComponent implements OnInit {
     this.cartService.cartChanged.next();
   }
 
-  onRemoveFromCart(item: Item) {
+  onRemoveFromCart(item: { cartItem: Item, quantity: number }) {
     // elemendi leidmine massiivis
     let index = this.itemsInCart.indexOf(item);
     // elemendi kustutamine massiivist
@@ -38,13 +39,15 @@ export class CartComponent implements OnInit {
 
   calculateSumOfCart() {
     this.sumOfCart = 0;
+    this.itemsCount = 0;
     // ngFor="let itemInCart of itemsInCart"
     // itemsInCart = [{item},{item},{title: "", price: 10}]
     // itemInCart = {item}
     // itemInCart = {title: "", price: 10}
     // itemInCart = {item}
     this.itemsInCart.forEach(itemInCart => {
-      this.sumOfCart += itemInCart.price
+      this.sumOfCart += itemInCart.cartItem.price * itemInCart.quantity;
+      this.itemsCount += itemInCart.quantity;
     });
   }
 }
