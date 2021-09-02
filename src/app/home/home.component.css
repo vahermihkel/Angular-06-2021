@@ -1,9 +1,3 @@
-.item {
-    margin-left: 40px;
-    height: 400px;
-    width: 300px;
-}
-
 .special-background {
     background-color: blueviolet;
 }
@@ -14,4 +8,32 @@
 
 .inactive {
     border: 1px solid red;
+}
+
+.filter-bar {
+    align-items: center; /* vertikaalselt keskel  */
+    background-color: #f2f2f2; /* taustavärv RGB max:ff, min:00  Red ff0000 Green 00ff00  Blue 0000ff */
+    display: flex; /* elemendid tema sees vasakult paremale  */
+    font-size: 12px; /* teksti suurus  */
+    height: 40px; /* kõrgus  */
+    margin: 10px; /* tõukab endast ruumi igas suunas 10px */
+                /* margin-top: 15px;
+                    margin-bottom: 11px;
+                    margin-left: 18px;
+                    margin-right: 12px   */ 
+                    /*  margin: 15px 12px 11px 18px  alustab ülevalt, ülal, paremal, all, vasakul  */
+                    /* margin: 15px 18px alustab ülevalt ja alt, teine on vasakult ja paremalt */
+    padding: 10px;
+}
+
+.items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-column-start: 1; 
+    grid-column-end: 3;    
+}
+
+.item {
+    width: 100%;
+    height: 360px;
 }

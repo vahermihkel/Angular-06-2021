@@ -8,9 +8,11 @@ button -->
 
 <!-- items = [{title:"asd",price:21},{...}] -->
 <!-- item = {title:"asd",price:21} -->
-<div>Sorteeri</div>
-<button (click)="onSortByTitle()">Tähestiku järgi</button>
-<button (click)="onSortByPrice()">Hinna järgi</button>
+<div class="filter-bar">
+    <div>Sorteeri</div>
+    <button (click)="onSortByTitle()">Tähestiku järgi</button>
+    <button (click)="onSortByPrice()">Hinna järgi</button>
+</div>
 <br><br><br>
 
 <app-spinner *ngIf="isLoading"></app-spinner>
@@ -18,15 +20,20 @@ button -->
 <div (click)="onCategoryClick('all')">Kõik kategooriad</div>
 <div (click)="onCategoryClick(category)" *ngFor="let category of categories">{{ category.charAt(0).toUpperCase() + category.slice(1)  }}</div>
 
-<div 
-    [ngClass]="{
-        'special-background': itemShown.title.substring(0,1)=='A',
-        'active': itemShown.isActive && isLoggedIn, 
-        'inactive': !itemShown.isActive && isLoggedIn}" 
-    *ngFor="let itemShown of items">
-    <app-item-card *ngIf="isLoggedIn || (!isLoggedIn && itemShown.isActive)"
-        [item]="itemShown" [isLoggedIn]="isLoggedIn" (activeChangedEvent)="saveToDatabaseOnActiveChanged($event)"></app-item-card>
-<!-- Input() item -->
+<div class="items-wrapper">
+    <div class="item"
+        [ngClass]="{
+            'special-background': itemShown.title.substring(0,1)=='A',
+            'active': itemShown.isActive && isLoggedIn, 
+            'inactive': !itemShown.isActive && isLoggedIn}" 
+        *ngFor="let itemShown of items">
+        <app-item-card 
+            [item]="itemShown" 
+            [isLoggedIn]="isLoggedIn" 
+            (activeChangedEvent)="saveToDatabaseOnActiveChanged($event)"
+            ></app-item-card>
+    <!-- Input() item -->
+    </div>
 </div>
 
 <!-- [class.active]="item.isActive" 

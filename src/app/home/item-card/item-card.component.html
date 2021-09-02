@@ -3,7 +3,7 @@
     <span *ngIf="item.isActive">Mitteaktiivseks</span>
 </button>
 <div routerLink="toode/{{ item.title }}">
-    <img src="{{ item.imgSrc }}" alt="">
+    <img class="item-image" src="{{ item.imgSrc }}" alt="">
     <div class="item-title">{{ item.title | shortenTitle }}</div><br>
     <span class="item-price">{{ item.price | itemPrice }}</span><br><br>
 </div>

@@ -27,11 +27,26 @@ export class CartComponent implements OnInit {
     this.cartService.cartChanged.next();
   }
 
+  onRemoveOneFromCart(item: { cartItem: Item, quantity: number }) {
+    this.cartService.deleteOneFromCart(item);
+    this.itemsInCart = this.cartService.getItemsFromCart();
+    this.calculateSumOfCart();
+    this.cartService.cartChanged.next();
+  }
+
+  onAddToCart(item: Item) {
+    console.log(item);
+    this.cartService.addToCart(item);
+    this.itemsInCart = this.cartService.getItemsFromCart();
+    this.calculateSumOfCart();
+    this.cartService.cartChanged.next();
+  }
+
   onRemoveFromCart(item: { cartItem: Item, quantity: number }) {
     // elemendi leidmine massiivis
     let index = this.itemsInCart.indexOf(item);
     // elemendi kustutamine massiivist
-    this.cartService.deleteOneFromCart(index);
+    this.cartService.deleteItemFromCart(index);
     this.itemsInCart = this.cartService.getItemsFromCart();
     this.calculateSumOfCart();
     this.cartService.cartChanged.next();

@@ -31,6 +31,9 @@ export class HomeComponent implements OnInit {
 
     this.authService.loggedInChanged.subscribe(() => {
       this.isLoggedIn = sessionStorage.getItem("userData") ? true : false;
+      if (!this.isLoggedIn) {
+        this.items = this.items.filter(item => item.isActive);
+      }
     });
 
     // this.items = this.itemService.getItems();
@@ -40,6 +43,11 @@ export class HomeComponent implements OnInit {
       this.items = firebaseItems;
       this.itemService.saveToServiceFromDatabase(firebaseItems);
       console.log("siia jõuan hiljem");
+
+      if (!this.isLoggedIn) {
+        this.items = this.items.filter(item => item.isActive);
+      }
+
       this.categories = this.uniqueCategoryPipe.transform(this.items);
     });
     console.log("siia jõuan varem");
